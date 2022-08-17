@@ -14,20 +14,16 @@ function pluralize(n: number, forms: Array<string>) {
 }
 
 export const TodoResults = () => {
-  const todos = useAppSelector((state) => state.todo.todos);
+  const todos = useAppSelector(state => state.todo.todos);
 
-  const countTodos = todos.filter((todo) => {
+  const countTodos = todos.filter(todo => {
     if (todo.checked === true) {
       return true;
     }
     return false;
   }).length;
 
-  const word = pluralize(countTodos, ["задание", "задания", "заданий"]);
+  const tasksDone = pluralize(countTodos, ["задание", "задания", "заданий"]);
 
-  const resultText = () => {
-    return `Выполнено ${word}`;
-  };
-
-  return <div className="todo-results">{resultText()}</div>;
+  return <div className="todo-results">{`Выполнено ${tasksDone}`}</div>;
 };
