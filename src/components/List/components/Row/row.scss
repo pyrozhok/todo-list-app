@@ -1,3 +1,5 @@
+@use "../../../../styles/fonts";
+
 .row {
   display: flex;
   align-items: center;
@@ -6,16 +8,23 @@
   margin: 0 auto 5px;
   cursor: pointer;
 
+  @media screen and (max-width: 768px) {
+    width: 100%;
+  }
+
   &-content {
-    
     border-radius: 4px;
     display: flex;
-    
+
     align-items: center;
     flex-wrap: nowrap;
     padding: 5px 10px 5px 5px;
     margin-right: 16px;
     font-weight: 400;
+
+    @media screen and (max-width: 768px) {
+      font-size: fonts.$taskSize;
+    }
 
     input {
       margin-right: 12px;

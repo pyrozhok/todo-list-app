@@ -6,7 +6,9 @@ export const TodoForm = () => {
   const [task, setTask] = useState("");
 
   const handleAddTodo = () => {
-    TodoActions.createTodo(task);
+    if (task.length > 1) {
+      TodoActions.createTodo(task);
+    } else alert("Название задачи не должно быть пустым");
   };
 
   const handleKeyUp = (e: KeyboardEvent) => {
@@ -17,15 +19,17 @@ export const TodoForm = () => {
 
   return (
     <div className="todo-form">
-      <input
-        placeholder="Новое задание"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
-        onKeyUp={handleKeyUp}
-      />
-      <button type="button" onClick={handleAddTodo}>
-        Добавить задание
-      </button>
+      <div className="input-panel">
+        <input
+          placeholder="Новое задание"
+          value={task}
+          onChange={e => setTask(e.target.value)}
+          onKeyUp={handleKeyUp}
+        />
+        <button type="button" onClick={handleAddTodo}>
+          Добавить задание
+        </button>
+      </div>
     </div>
   );
 };
